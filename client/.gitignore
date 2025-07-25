@@ -1,25 +1,3 @@
-node_modules/
-config/
-.env
-uploads/*
-!uploads/.gitkeep
-
-# Ignore Angular build output
-/client/dist/
-/client/.angular/cache/
-/client/.angular/
-
-# Ignore dependencies
-/client/node_modules/
-
-/client/package-lock.json
-
-# Ignore VSCode settings (optional)
-client/.vscode/
-
-# Optional: editor & system files
-client/.DS_Store
-client/.env
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
