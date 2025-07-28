@@ -2,6 +2,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
 import { provideRouter } from '@angular/router';
+import { importProvidersFrom } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginPage } from './app/login-page/login-page';
 import { AuthLayout } from './app/shared/layouts/auth-layout/auth-layout';
@@ -10,6 +12,7 @@ import { RegisterPage } from './app/register-page/register-page';
 
 bootstrapApplication(App, {
   providers: [
+    importProvidersFrom(ReactiveFormsModule),
     provideRouter([
       {
         path: '',
