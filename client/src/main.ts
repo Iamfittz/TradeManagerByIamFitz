@@ -4,15 +4,18 @@ import { App } from './app/app';
 import { provideRouter } from '@angular/router';
 import { importProvidersFrom } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { LoginPage } from './app/login-page/login-page';
 import { AuthLayout } from './app/shared/layouts/auth-layout/auth-layout';
 import { SiteLayout } from './app/shared/layouts/site-layout/site-layout';
 import { RegisterPage } from './app/register-page/register-page';
 
+
 bootstrapApplication(App, {
   providers: [
-    importProvidersFrom(ReactiveFormsModule),
+    importProvidersFrom(ReactiveFormsModule, HttpClientModule),
     provideRouter([
       {
         path: '',

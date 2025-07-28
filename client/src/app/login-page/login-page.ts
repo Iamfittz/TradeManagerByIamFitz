@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,17 +13,23 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators } 
 export class LoginPage implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private auth: AuthService, private fb: FormBuilder) { }
+
 
   ngOnInit() {
     this.form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
-});
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
 
   }
 
   onSubmit() {
-    console.log('Форма отправлена:', this.form.value);
-  }
+  this.auth.login(this.form.value).subscribe({
+    next: () => console.log('Login success'),
+    error: (err) => console.error('Login failed:', err)
+  });
+}
+
+
 }
